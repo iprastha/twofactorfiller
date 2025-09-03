@@ -4,7 +4,7 @@ A proof of concept Time-based One-Time Password (TOTP) generator that mimics how
 
 ## Features
 
-- RFC 6238 compliant TOTP generation using the `otplib` library
+- RFC 6238 compliant TOTP generation using the `speakeasy` library
 - Real-time OTP generation with 30-second intervals
 - Visual countdown timer showing time remaining
 - Progress bar indicating current period position
@@ -53,20 +53,28 @@ You can also use the complete otpauth URI that QR codes contain:
 node totp-generator.js "otpauth://totp/Example:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=Example"
 ```
 
+Example with a real QR code URI:
+```bash
+node totp-generator.js "otpauth://totp/totp@authenticationtest.com?secret=I65VU7K5ZQL7WB4E"
+```
+
 The application will automatically parse the URI and extract:
 - The secret key
-- Issuer information
+- Issuer information  
 - Account label
 - Algorithm, digits, and period settings
+
+**This is the recommended method** as it ensures you're using the exact same parameters as the service intended.
 
 ## How to Get Your Secret Key or QR Code Content
 
 When setting up 2FA on a service:
 
-### Method 1: QR Code Content
+### Method 1: QR Code Content (Recommended)
 1. **Scan QR Code**: Use a QR code reader app to decode the QR code
 2. **Extract URI**: The QR code contains an `otpauth://` URI that you can use directly
 3. **Use Full URI**: Copy the entire URI and pass it to the application in quotes
+4. **Example URI format**: `otpauth://totp/service@email.com?secret=SECRETKEY&issuer=ServiceName`
 
 ### Method 2: Manual Secret Key Entry
 1. **QR Code Method**: Most services show a QR code. Look for a "Can't scan?" or "Manual entry" option
