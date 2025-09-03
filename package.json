@@ -1,0 +1,24 @@
+{
+  "name": "twofactor-otp-generator",
+  "version": "1.0.0",
+  "description": "A proof of concept 2FA OTP generator that mimics authenticator apps",
+  "main": "totp-generator.js",
+  "scripts": {
+    "start": "node totp-generator.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "2fa",
+    "totp",
+    "otp",
+    "authenticator",
+    "two-factor-authentication"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "otplib": "^12.0.1",
+    "speakeasy": "^2.0.0",
+    "totp-generator": "^1.0.0"
+  }
+}
